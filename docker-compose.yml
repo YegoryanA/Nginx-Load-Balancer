@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+
+#1st nginx service which must be exposed on 8080
+  nginx1:
+    image: nginx:latest
+    ports:
+    - 8080:80
+    volumes:
+      - /home/centos/docker/nginx1:/usr/share/nginx/html
+    restart: always
+
+#2nd nginx service which must be exposed on 8081
+  nginx2:
+    image: nginx:latest
+    ports:
+    - 8081:80
+    volumes:
+      - /home/centos/docker/nginx2:/usr/share/nginx/html
+    restart: always
+
+#load balancer for 1st and 2nd nginx services
+  nginx3:
+    image: nginx:latest
+    ports:
+    - 80:80
+    volumes:
+      - /home/centos/docker/nginx3/nginxconf:/etc/nginx:ro
+      - /home/centos/docker/nginx3/logs:/var/log/nginx
+    restart: always
+    depends_on:
+      - nginx1
+      - nginx2
+
