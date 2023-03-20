@@ -1,4 +1,5 @@
-# Nginx-Load-Balancer
+# Nginx-Load-Balancer for Centos 7
+## AWS AMI is ami-051806c39fa542e22
 ## Before starting please copy commands to instance user data, after that wait about 10 minutes and start using your instance.
 ## Don't forgett about Inbound rules ( 8080, 8081, 80, 22 ports must be opened )
 ## Enjoy!!!
